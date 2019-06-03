@@ -1,10 +1,19 @@
 import React, {Component} from 'react'
 import Container from '@material-ui/core/Container'
+import dayjs from 'dayjs'
+import 'dayjs/locale/es'
 
 import Newsgrid from '../components/Newsgrid'
 import Loading from '../components/Loading'
 import Footer from '../components/Footer'
 
+dayjs.locale('es')
+
+const date = dayjs()
+const dateFormatted = date.format('YYYY[-]MM[-]DD')
+const API_URL = `https://api.canillitapp.com/latest/${dateFormatted}`
+
+console.log('API_URL', API_URL)
 
 class Home extends Component {
   constructor (props){
@@ -17,7 +26,7 @@ class Home extends Component {
 
   async componentDidMount(){
     try {
-      const response = await fetch('https://api.canillitapp.com/latest/2019-06-01');
+      const response = await fetch(API_URL);
       if (!response.ok) {
         throw Error(response.statusText);
       }
