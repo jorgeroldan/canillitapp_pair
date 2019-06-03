@@ -1,69 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Acámica - Frontend Avanzado con React
 
-## Available Scripts
+## Segundo Proyecto - NewsFeed
 
-In the project directory, you can run:
+### API
 
-### `npm start`
+API: https://api.canillitapp.com
+Documentación: https://github.com/Canillitapp/headlines-api
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Categorías (5):
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Política: https://api.canillitapp.com/news/category/1
+- Internacionales: https://api.canillitapp.com/news/category/2
+- Tecnología: https://api.canillitapp.com/news/category/3
+- Espectáculos: https://api.canillitapp.com/news/category/4
+- Deportes: https://api.canillitapp.com/news/category/5
 
-### `npm test`
+### Otros endpoints (4):
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Popular por cantidad `https://api.canillitapp.com/trending/:yyyy-mm-dd/:quantity`
+Por ejemplo: https://api.canillitapp.com/trending/2017-04-08/2
 
-### `npm run build`
+- Popular sin cantidad (solo 3) `https://api.canillitapp.com/trending/:yyyy-mm-dd`
+Por ejemplo: https://api.canillitapp.com/trending/2017-04-08/2
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Últimas noticias, devuelve toda las noticias ordenadas de más nuevas a más viejas `https://api.canillitapp.com/latest/:yyyy-mm-dd`
+Por ejemplo: https://api.canillitapp.com/latest/2017-04-08
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Búsqueda `https://api.canillitapp.com/search/:foo`
+Por ejemplo: https://api.canillitapp.com/search/messi
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Diseño
 
-### `npm run eject`
+El diseño lo pueden hacer en base del siguiente link, identificando los componentes correspondiente usando styled-components: [Diseño](https://s3.amazonaws.com/resources.acamica.com/contenidos/react/news-room/components.pdf)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Lo pueden hacer con Bulma u otro framework CSS, o basandose en algún diseño de [Behance](https://www.behance.net) o [Dribbble](https://dribbble.com).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Link a plataforma de [Acámica](https://www.acamica.com/cursos/506)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Funcionalidad
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [ ] Poder visualizar en la ruta `/` todas las noticias del día de la fecha usando el endpoint de la API `/latest` y pasandole por `query` la fecha actual con el formato `yyyy-mm-dd`.
 
-## Learn More
+* [ ] Poder clickear en cada categoría y ver las noticias de esa categoría.
+Cada categoría me llevaría a su propia ruta por ej: `/categoria/politica` o `/categoria/internacionales`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [ ] Poder buscar por título cualquier noticia usando el endpoint de Búsqueda de la API.
+Esto me llevaría a la ruta de `/busqueda/:query` por ej: `/busqueda/messi`.
+Para obtener por props el `query`, y fetchear usando el endpoint de `/search`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [ ] En cada noticia debo poder hacer click en algún link para ir a la fuente original.
 
-### Code Splitting
+### Tecnologías
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- React y React DOM
+- React Router
+- Styled-components ( Opcional )
+- Bulma u otro framework CSS ( opcional )
 
-### Analyzing the Bundle Size
+### Como crear un proyecto desde cero:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. Usamos create-react-app: `npx create-react-app news-feed`
+2. Borramos algunos archivos del boilerplate: `App.test.js`, `serviceWorker.js`, `logo.svg`, y `index.css`.
+3. Nos movemos al `index.js` y borramos las lineas: `import './index.css';`, `import * as serviceWorker from './serviceWorker';` y `serviceWorker.unregister();`
+4. Nos movemos al `App.js` y borramos la linea: `import logo from './logo.svg';`
+5. Crear las carpetas: `/components`, `/components/App` y `/pages`.
+6. Movemos nuestro `App.js` ( y lo renombramos a `index.js` ) y `App.css` a `/components/App`.
+7. Modificamos el `index.js` para importar App usando `import App from './components/App';`
+8. Instalamos dependencias: `react-router-dom` y `styled-components` usando `npm install react-router-dom styled-components`
+9. Correr el proyecto con: `npm start` o `npm run start`
 
-### Making a Progressive Web App
+### Como encarar el proyecto:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# canillitapp_pair
+1. Hacer todos los componentes y el layout de la App
+2. Mostrar datos en función de una variable que contiene un array copiado del JSON de la API
+3. Agregar `react-router-dom` para mostrar las distintas páginas según las rutas indicadas
+4. Agregar la lógica necesaria para fetchear las distintas noticias y lógica extra que sea necesaria
