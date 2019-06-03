@@ -3,6 +3,8 @@ import Container from '@material-ui/core/Container'
 
 import Newsgrid from '../components/Newsgrid'
 import Loading from '../components/Loading'
+import Footer from '../components/Footer'
+
 
 class Home extends Component {
   constructor (props){
@@ -34,9 +36,10 @@ class Home extends Component {
     return (
       <React.Fragment >
       {this.state.isloading && <Loading /> }
-      <Container>
-      {!this.state.isloading && <Newsgrid /> }
+      <Container>  
+      {!this.state.isloading && <Newsgrid news={this.state.news}/> }
       </Container>
+      <Footer />
       </React.Fragment>
     )
 

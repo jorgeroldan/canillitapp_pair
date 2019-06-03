@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Newitem from '../Newsitem';
 
 import Slider from '../Slider'
+import PostSub from '../../components/PostSub'
 
 const styles = theme => ({
   root: {
@@ -17,32 +18,37 @@ const styles = theme => ({
   },
 });
 
-const Newsgrid = (props) =>  {
-  const { classes } = props;
+const Newsgrid = ({classes, news}) =>  {
 
   return (
+    
     <div className={classes.root}>
+    <Slider />
+    <PostSub />
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Slider />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-         <Newitem />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Newitem />
+        <Grid item xs={6} sm={3}>
+          <Newitem data={news[3]}/>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Newitem />
+          <Newitem data={news[4]}/>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Newitem />
+          <Newitem data={news[5]}/>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Newitem />
+          <Newitem data={news[3]}/>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Newitem />
+          <Newitem data={news[4]}/>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Newitem data={news[4]}/>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Newitem data={news[5]}/>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Newitem data={news[3]}/>
         </Grid>
       </Grid>
     </div>

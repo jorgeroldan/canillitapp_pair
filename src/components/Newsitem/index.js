@@ -14,9 +14,10 @@ const useStyles = makeStyles({
   },
 });
 
-function Newitem() {
+function Newitem(props) {
   const classes = useStyles();
 
+  console.log(props)
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -39,10 +40,10 @@ function Newitem() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Compartir
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Más info
         </Button>
       </CardActions>
     </Card>
