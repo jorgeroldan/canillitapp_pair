@@ -14,10 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-function Newitem(props) {
+function Newitem({news_id, date, category, title, img_url, url}) {
   const classes = useStyles();
 
-  console.log(props)
+console.log('date', date)
+console.log('news_id', news_id)
+
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -25,24 +27,20 @@ function Newitem(props) {
           component="img"
           alt="Contemplative Reptile"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={img_url}
+          title={title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Noticia
+            {category}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {title}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Compartir
-        </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" href={url} >
           Más info
         </Button>
       </CardActions>

@@ -6,6 +6,7 @@ import 'dayjs/locale/es'
 import Newsgrid from '../components/Newsgrid'
 import Loading from '../components/Loading'
 import Footer from '../components/Footer'
+import Destacadas from '../components/Destacadas'
 
 dayjs.locale('es')
 
@@ -44,11 +45,12 @@ class Home extends Component {
     console.log(this.state.news)
     return (
       <React.Fragment >
-      {this.state.isloading && <Loading /> }
-      <Container>  
-      {!this.state.isloading && <Newsgrid news={this.state.news}/> }
-      </Container>
-      <Footer />
+        {this.state.isloading && <Loading /> }
+        <Container>  
+        {!this.state.isloading && <Newsgrid news={this.state.news} /> }
+        {!this.state.isloading && <Destacadas news={this.state.news} />}
+        </Container>
+        <Footer />
       </React.Fragment>
     )
 

@@ -85,19 +85,23 @@ import Hidden from '@material-ui/core/Hidden';
     {
       title: 'Noticia secundaria',
       date: 'Nov 12',
+      key: '01', 
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
     },
     {
       title: 'Noticia secundaria',
       date: 'Nov 11',
+      key: '02',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
     },
   ];
 
 
-const PostSub = () => {
+
+
+const Destacadas = ({news}) => {
     const classes = useStyles();
 
 return (
@@ -140,4 +144,4 @@ return (
 
 }
 
-export default PostSub
+export default Destacadas

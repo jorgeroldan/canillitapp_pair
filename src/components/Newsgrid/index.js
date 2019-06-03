@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Newitem from '../Newsitem';
+import Newsitem from '../Newsitem';
 
 import Slider from '../Slider'
-import PostSub from '../../components/PostSub'
+
+import Destacadas from '../Destacadas'
 
 const styles = theme => ({
   root: {
@@ -20,35 +21,21 @@ const styles = theme => ({
 
 const Newsgrid = ({classes, news}) =>  {
 
+  const ultimasNoticias = news.slice(3, 10)
+  
   return (
-    
+     
     <div className={classes.root}>
-    <Slider />
-    <PostSub />
-      <Grid container spacing={3}>
+      <Slider />
+      <Destacadas />
+
+      <Grid container spacing={3} >
         <Grid item xs={6} sm={3}>
-          <Newitem data={news[3]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[4]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[5]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[3]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[4]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[4]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[5]}/>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Newitem data={news[3]}/>
+          {ultimasNoticias.map(item => (
+                    <div key={item.news_id}>
+                        <Newsitem {...item} />
+                    </div>
+                ))}
         </Grid>
       </Grid>
     </div>
