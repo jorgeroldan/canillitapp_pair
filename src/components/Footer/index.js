@@ -8,11 +8,11 @@ import Container from '@material-ui/core/Container';
 function MadeWithLove() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
-        {'Built with love by the '}
+        {'Hecho a traves '}
         <Link color="inherit" href="https://material-ui.com/">
-          Material-UI
+          Pair Programming
         </Link>
-        {' team.'}
+        {' XP.'}
       </Typography>
     );
   }
@@ -96,10 +96,10 @@ const Footer = () => {
       <footer className={classes.footer}>
         <Container maxWidth="lg">
           <Typography variant="h6" align="center" gutterBottom>
-            Footer
+            Acamica Front-End Avanzado
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Something here to give the footer a purpose!
+            Proyecto de noticias utilizando React
           </Typography>
           <MadeWithLove />
         </Container>

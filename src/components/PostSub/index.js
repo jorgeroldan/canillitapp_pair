@@ -8,19 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
-import Link from '@material-ui/core/Link';
 
-function MadeWithLove() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Built with love by the '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Material-UI
-        </Link>
-        {' team.'}
-      </Typography>
-    );
-  }
 
   const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -95,13 +83,13 @@ function MadeWithLove() {
 
   const featuredPosts = [
     {
-      title: 'Featured post',
+      title: 'Noticia secundaria',
       date: 'Nov 12',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
     },
     {
-      title: 'Post title',
+      title: 'Noticia secundaria',
       date: 'Nov 11',
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',

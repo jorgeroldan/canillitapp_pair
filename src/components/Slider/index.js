@@ -107,7 +107,7 @@ export default function Blog() {
             noWrap
             className={classes.toolbarTitle}
           >
-            Noticias
+            Categorias
           </Typography>
         </Toolbar>
         <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
@@ -140,14 +140,14 @@ export default function Blog() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
+                    Noticia Principal
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
                     Multiple lines of text that form the lede, informing new readers quickly and
                     efficiently about what&apos;s most interesting in this post&apos;s contents.
                   </Typography>
                   <Link variant="subtitle1" href="#">
-                    Continue reading…
+                    Seguir leyendo…
                   </Link>
                 </div>
               </Grid>
