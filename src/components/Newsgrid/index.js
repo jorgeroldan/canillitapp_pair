@@ -6,8 +6,6 @@ import Newsitem from '../Newsitem';
 
 import Slider from '../Slider'
 
-import Destacadas from '../Destacadas'
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -19,24 +17,32 @@ const styles = theme => ({
   },
 });
 
-const Newsgrid = ({classes, news}) =>  {
+const Newsgrid = ({ classes, news }) => {
+  const destacada = news[0]
 
-  const ultimasNoticias = news.slice(3, 10)
+  const secundarias = news.slice(1, 3).map(newsItem => {
+    return (
+    <Grid item xs={12} sm={6}>
+      <Newsitem data={newsItem} height="300" />
+    </Grid>
+    )
+  })
 
+  const grillaRoll = news.slice(3, 11).map(newsItem => {
+    return (
+    <Grid item xs={6} sm={3}>
+      <Newsitem data={newsItem} height="140"/>
+    </Grid>
+    )
+  })
   return (
-     
-    <div className={classes.root}>
-      <Slider />
-      <Destacadas />
-
-      <Grid container spacing={3} >
-        <Grid item xs={6} sm={3}>
-          {ultimasNoticias.map(item => (
-                    <div key={item.news_id}>
-                        <Newsitem {...item} />
-                    </div>
-                ))}
-        </Grid>
+    <div className={classes.root}> 
+    <Grid item xs={12}>
+        <Slider news={destacada} />
+        </Grid> 
+      <Grid container spacing={3}> 
+        {secundarias}
+        {grillaRoll}
       </Grid>
     </div>
   );

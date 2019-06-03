@@ -91,8 +91,9 @@ const sections = [
 
 
 
-export default function Blog() {
+export default function Slider({news}) {
   const classes = useStyles();
+
 
   return (
     <React.Fragment>
@@ -131,7 +132,7 @@ export default function Blog() {
             {
               <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/user/erondu"
+                src={"https://source.unsplash.com/user/erondu"}
                 alt="background"
               />
             }

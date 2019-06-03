@@ -48,7 +48,6 @@ class Home extends Component {
         {this.state.isloading && <Loading /> }
         <Container>  
         {!this.state.isloading && <Newsgrid news={this.state.news} /> }
-        {!this.state.isloading && <Destacadas news={this.state.news} />}
         </Container>
         <Footer />
       </React.Fragment>

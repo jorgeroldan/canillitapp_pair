@@ -10,12 +10,13 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    // maxWidth: 345,
   },
 });
 
-function Newitem({news_id, date, category, title, img_url, url}) {
+function Newsitem({data}) {
   const classes = useStyles();
+  const {news_id, date, category, title, img_url, url, height} = data
 
 console.log('date', date)
 console.log('news_id', news_id)
@@ -26,7 +27,7 @@ console.log('news_id', news_id)
         <CardMedia
           component="img"
           alt="Contemplative Reptile"
-          height="140"
+          height={height}
           image={img_url}
           title={title}
         />
@@ -48,4 +49,4 @@ console.log('news_id', news_id)
   );
 }
 
-export default Newitem;
+export default Newsitem;
