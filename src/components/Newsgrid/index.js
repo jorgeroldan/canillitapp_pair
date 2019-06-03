@@ -22,7 +22,7 @@ const styles = theme => ({
 const Newsgrid = ({classes, news}) =>  {
 
   const ultimasNoticias = news.slice(3, 10)
-  
+
   return (
      
     <div className={classes.root}>

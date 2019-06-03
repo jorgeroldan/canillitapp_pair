@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,8 +66,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
+
+
 function Nav() {
+
   const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -76,7 +94,28 @@ function Nav() {
             color="inherit"
             aria-label="Open drawer"
           >
-            <MenuIcon />
+          
+            <MenuIcon aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/">
+                  <p className="navbar-item">Home</p>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/category/:slug">
+                  <p className="navbar-item">Category</p>
+                </Link>
+              </MenuItem>
+            </Menu>
+              
+ 
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             News App
