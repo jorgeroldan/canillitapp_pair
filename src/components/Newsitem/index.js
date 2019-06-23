@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 function Newsitem({data}) {
   const classes = useStyles();
-  const {news_id, date, category, title, img_url, url, height} = data
+  const {news_id, date, source_name, title, img_url, url, height} = data
 
 console.log('date', date)
 console.log('news_id', news_id)
@@ -33,7 +33,7 @@ console.log('news_id', news_id)
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {category}
+            {source_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {title}

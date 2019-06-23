@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 import Footer from '../components/Footer'
 
 
-class Category extends Component {
+class Search extends Component {
   constructor (props){
     super(props)
     this.state = {
@@ -16,21 +16,14 @@ class Category extends Component {
   }
 
   async fetchCategoryNews(){
-    const { slug } = this.props.match.params
+    const term = this.props.match.params.slug
 
-    console.log('slug',)
-    const categoriesId = {
-        politica: '1',
-        internacionales: '2',
-        tecnologia: '3',
-        espectaculos: '4',
-        deportes: '5',
-      }
+    
       this.setState({
           isLoading:true
       })
     try {
-        const response = await fetch(`https://api.canillitapp.com/news/category/${categoriesId[slug]}`);
+        const response = await fetch(`https://api.canillitapp.com/search/${term}`);
         if (!response.ok) {
           throw Error(response.statusText);
         }
@@ -70,4 +63,4 @@ componentDidUpdate(prevProps) {
   
 }
 
-export default Category
+export default Search

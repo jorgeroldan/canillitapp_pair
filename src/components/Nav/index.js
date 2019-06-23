@@ -1,21 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import { fade } from '@material-ui/core/styles/colorManipulator';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import {Link, withRouter} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1, 
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -64,18 +62,20 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  logo:{
+    width:'220px',
+    marginRight:'30px'
+  },
+  bar:{
+    backgroundColor:'#blue'
+  },
+  link:{
+    color:'#000'
+  }
 }));
 
-
-
-
-
-function Nav() {
-
-  const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
+function NavBar(props) {
+    const [anchorEl, setAnchorEl] = React.useState(null);
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
   }
@@ -84,52 +84,50 @@ function Nav() {
     setAnchorEl(null);
   }
 
+  const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <IconButton
+            onClick={handleClick}
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
           >
-          
-            <MenuIcon aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link to="/">
-                  <p className="navbar-item">Home</p>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link to="/category/:slug">
-                  <p className="navbar-item">Category</p>
-                </Link>
-              </MenuItem>
-            </Menu>
-              
- 
+            <MenuIcon />
           </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+            >
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/'}>Inicio </Link></MenuItem>
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/category/politica'}>Política </Link></MenuItem>
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/category/internacionales'}>Internacionales </Link></MenuItem>
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/category/tecnologia'}>Tecnología </Link></MenuItem>
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/category/espectaculos'}>Espectáculos </Link></MenuItem>
+              <MenuItem><Link onClick={handleClose} className={classes.link} to={'/category/deportes'}>Deportes</Link></MenuItem>
+            </Menu>
           <Typography className={classes.title} variant="h6" noWrap>
-            News App
+          {/* <Link className={classes.link} to={'/'}><img className={classes.logo} src={logo} alt="Logo" /></Link> */}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+                onKeyPress={(event)=>event.key === 'Enter' ? props.history.push(`/search/${event.target.value}`):null}
+              placeholder="Buscar…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              inputProps={{ 'aria-label': 'Search' }}
             />
           </div>
         </Toolbar>
@@ -138,31 +136,8 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default withRouter(NavBar);
 
 
-// const Nav = () => {
-//     return (
-//         <React.Fragment>
-//             <nav className='navbar'>
-
-//                 <Link to='/'>
-    
-//                     Home
-         
-//                 </Link>
-
-//                 <Link to='/category/:id'>
-        
-//                     Category
-
-//                 </Link>
-
-//             </nav>
-//         </React.Fragment>
-
-
-//     )
-// }
 
 

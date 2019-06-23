@@ -6,7 +6,7 @@ import 'dayjs/locale/es'
 import Newsgrid from '../components/Newsgrid'
 import Loading from '../components/Loading'
 import Footer from '../components/Footer'
-import Destacadas from '../components/Destacadas'
+// import Destacadas from '../components/Destacadas'
 
 dayjs.locale('es')
 

@@ -22,7 +22,7 @@ const Newsgrid = ({ classes, news }) => {
 
   const secundarias = news.slice(1, 3).map(newsItem => {
     return (
-    <Grid item xs={12} sm={6}>
+    <Grid item xs={12} sm={6} key={newsItem.url}>
       <Newsitem data={newsItem} height="300" />
     </Grid>
     )
@@ -30,7 +30,7 @@ const Newsgrid = ({ classes, news }) => {
 
   const grillaRoll = news.slice(3, 11).map(newsItem => {
     return (
-    <Grid item xs={6} sm={3}>
+    <Grid item xs={6} sm={3} key={newsItem.url}>
       <Newsitem data={newsItem} height="140"/>
     </Grid>
     )
